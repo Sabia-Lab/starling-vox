@@ -7,10 +7,6 @@ assignees: ''
 
 ---
 
-## **Description**
-
-(Short and simple description of the issue)
-
 ## **User Story**
 
 (The user story related to the issue)
