@@ -15,20 +15,68 @@ export default function Page() {
                     $schema: 'https://vega.github.io/schema/vega-lite/v6.json',
                     description: 'Course chart',               // add description as variable
                     data: {values: data},
+                    transform: [
+                        {
+                            calculate: "if (datum.likert === '1', -2,0) + if(datum.likert === '2', -1,0) + if(datum.likert === '3', 0,0) + if(datum.likert === '4', 1,0) + if(datum.likert === '5', 2,0)",
+                            as: "q_order"
+                        },
+                        {
+                            calculate: "if (datum.likert === '1' || datum.likert === '2', datum.percentage,0) + if (datum.likert === '3', datum.percentage/2, 0)",
+                            as: "signed_percentage"
+                        },
+                        {
+                            stack: "percentage", as: ["v1", "v2"], groupby: ["question"]
+                        },
+                        { 
+                            joinaggregate: [
+                                {
+                                    field: "signed_percentage",
+                                    op: "sum",
+                                    as: "offset"
+                                }
+                            ],
+                            groupby: ["question"]
+                        },
+                        {
+                            calculate: "datum.v1 - datum.offset", as: "negX"
+                        },
+                        {
+                            calculate: "datum.v2 - datum.offset", as: "posX"
+                        }                        
+                    ],
                     mark: 'bar',
                     encoding: {
-                        y: {field: 'question', type: 'nominal', axis: {title: 'Questions'}},
-                        x: {aggregate: 'sum',
-                            field: 'count', 
-                            type: 'quantitative', 
-                            stack: 'normalize',           //can decide to normalize each on 100% or keep counts - maybe in divergent bar chart don't want?
-                            axis: {title: 'Score'}},
+                        x: {
+                            field: "negX",
+                            type: "quantitative",
+                            title: "Percentage"
+                        },
+                        x2:{
+                            field: "posX"
+                        },
+                        y: {
+                            field: 'question', 
+                            type: 'nominal', 
+                            axis: {
+                                title: 'Questions',
+                                offset: 5,
+                                ticks: false,
+                                minExtent: 60, 
+                                domain: false
+                            }
+                        },
+                        //x: {aggregate: 'sum',
+                        //    field: 'count', 
+                        //    type: 'quantitative', 
+                        //    stack: 'normalize',           //can decide to normalize each on 100% or keep counts - maybe in divergent bar chart don't want?
+                        //    axis: {title: 'Score'}},
                         color: {
                             field: 'likert',
                             type: 'ordinal',
                             scale: {
                                 domain: ["1", "2", "3", "4", "5"],
-                                range: ["#d73027", "#fc8d59", "#fee08b", "#d9ef8B", "#1a9850"] // add custom colors as style variables?
+                                range: ["#d73027", "#fc8d59", "#fee08b", "#d9ef8B", "#1a9850"], // add custom colors as style variables?
+                                type: "ordinal"
                             },
                             legend: {title: "Likert scale"}
                         },
