@@ -1,5 +1,16 @@
 @import "../theme/themes.css";
 @import "../theme/themes.hc.css";
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #ffffff;
+    --foreground: #171717;
+  }
+}
 
 html,
 body {
