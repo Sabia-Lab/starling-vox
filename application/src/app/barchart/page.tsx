@@ -13,12 +13,30 @@ export default function Page() {
             .then((data) => {
                 const spec : VisualizationSpec = {
                     $schema: 'https://vega.github.io/schema/vega-lite/v6.json',
-                    description: 'Course chart',
+                    description: 'Course chart',               // add description as variable
                     data: {values: data},
                     mark: 'bar',
                     encoding: {
-                        y: {field: 'a', type: 'nominal', axis: {title: 'Questions'}},
-                        x: {field: 'b', type: 'quantitative', axis: {title: 'Score'}}
+                        y: {field: 'question', type: 'nominal', axis: {title: 'Questions'}},
+                        x: {aggregate: 'sum',
+                            field: 'count', 
+                            type: 'quantitative', 
+                            stack: 'normalize',           //can decide to normalize each on 100% or keep counts - maybe in divergent bar chart don't want?
+                            axis: {title: 'Score'}},
+                        color: {
+                            field: 'likert',
+                            type: 'ordinal',
+                            scale: {
+                                domain: ["1", "2", "3", "4", "5"],
+                                range: ["#d73027", "#fc8d59", "#fee08b", "#d9ef8B", "#1a9850"] // add custom colors as style variables?
+                            },
+                            legend: {title: "Likert scale"}
+                        },
+                        tooltip: [
+                            {field: "question", type: "nominal"},
+                            {field: "likert", type: "ordinal"},
+                            {field: "count", type: "quantitative"},
+                        ]
                     }
                 };
 

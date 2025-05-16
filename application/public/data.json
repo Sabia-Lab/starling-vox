@@ -1,11 +1,21 @@
 [
-  {"a": "C", "b": 2},
-  {"a": "C", "b": 7},
-  {"a": "C", "b": 4},
-  {"a": "D", "b": 1},
-  {"a": "D", "b": 2},
-  {"a": "D", "b": 6},
-  {"a": "E", "b": 8},
-  {"a": "E", "b": 4},
-  {"a": "E", "b": 7}
+  {"question": "Teaching", "likert": "1", "count": 2},
+  {"question": "Teaching", "likert": "2", "count": 7},
+  {"question": "Teaching", "likert": "3","count": 4},
+  {"question": "Teaching", "likert": "4","count": 0},
+  {"question": "Teaching", "likert": "5","count": 0},
+
+
+  {"question": "Assignments", "likert": "1", "count": 1},
+  {"question": "Assignments", "likert": "2", "count": 2},
+  {"question": "Assignments", "likert": "3", "count": 6},
+  {"question": "Assignments", "likert": "4", "count": 0},
+  {"question": "Assignments", "likert": "5", "count": 0},
+
+
+  {"question": "Material", "likert": "1", "count": 8},
+  {"question": "Material", "likert": "2", "count": 4},
+  {"question": "Material", "likert": "3", "count": 7},
+  {"question": "Material", "likert": "4", "count": 0},
+  {"question": "Material", "likert": "5", "count": 0}
 ]
