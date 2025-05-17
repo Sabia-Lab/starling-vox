@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import "../theme/theme.css";
-import "./globals.css";
+import ThemeWrapper from "@/theme/theme.provider";
+import Header from "@/components/header/header";
+import Head from "@/components/head/head";
+import "@/app/globals.css";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -14,7 +16,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Starling Vox"
+  title: "Starling Vox",
 };
 
 export default function RootLayout({
@@ -23,10 +25,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        {children}
-      </body>
-    </html>
+    <ThemeWrapper>
+      <html lang="en" suppressHydrationWarning>
+        <Head />
+        <body className={`${geistSans.variable} ${geistMono.variable}`}>
+          <Header />
+          {children}
+        </body>
+      </html>
+    </ThemeWrapper>
   );
 }
