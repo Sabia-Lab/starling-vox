@@ -114,8 +114,8 @@ const ThemeWrapper = ({ children }: { children: React.ReactNode }) => {
   );
 };
 
-const wrapContextInTheme = () => useContext(themeContext);
+const useTheme = () => useContext(themeContext);
 
-export { wrapContextInTheme };
+export { useTheme };
 export type { ThemeContextWrapper };
 export default ThemeWrapper;

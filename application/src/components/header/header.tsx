@@ -1,12 +1,30 @@
 "use client";
-import { context } from "../head/head";
+import { ThemeContextWrapper, useTheme } from "@/theme/theme.provider";
+import style from "./header.module.css";
+import { ReactSVG } from "react-svg";
 
 const Header = () => {
+  const context: ThemeContextWrapper = useTheme();
+
   return (
-    <div>
-      <button onClick={context!.toggleDarkMode}>Toggle Dark Mode</button>
-      <button onClick={context!.toggleContrastMode}>
-        Toggle High Contrast
+    <div className={style.container}>
+      <button className={style.button} onClick={context!.toggleDarkMode}>
+        <ReactSVG
+          src={
+            context.isDark
+              ? "images/header/light_mode.svg"
+              : "images/header/dark_mode.svg"
+          }
+        />
+      </button>
+      <button className={style.button} onClick={context!.toggleContrastMode}>
+        <ReactSVG
+          src={
+            context.isHighContrast
+              ? "images/header/contrast_normal.svg"
+              : "images/header/contrast_high.svg"
+          }
+        />
       </button>
     </div>
   );
