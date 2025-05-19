@@ -116,6 +116,37 @@ const ThemeWrapper = ({ children }: { children: React.ReactNode }) => {
 
 const useTheme = () => useContext(themeContext);
 
-export { useTheme };
+/**
+ * Retrieve CSS color for use in JS libraries.
+ *
+ * *Usage:*
+ *
+ * `evaluateColor("primary")` returns the CSS value of property `--color-primary`
+ *
+ * `evaluateColor("secondary-container")` returns the CSS value of property
+ * `--color-secondary-container`
+ *
+ * @param name Name of the color
+ * @returns CSS compliant color string (rgba, rgb, hex or alias)
+ */
+const evaluateColor = (name: String): String | undefined => {
+  if (typeof window !== "undefined") {
+    const colorValue = getComputedStyle(document.documentElement)
+      .getPropertyValue(`--color-${name}`)
+      .trim();
+
+    if (colorValue) {
+      return colorValue;
+    } else {
+      console.error(`--color-${name} not found.`);
+    }
+  } else {
+    console.error("evaluateColor(String) can only run on a client.");
+  }
+
+  return undefined;
+};
+
+export { useTheme, evaluateColor };
 export type { ThemeContextWrapper };
 export default ThemeWrapper;
