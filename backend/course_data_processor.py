@@ -3,6 +3,7 @@ import json
 
 # need to fix json file name
 # handle null values (or 0)
+# percantage
 
 excel_file = "./data/DIT333 Fake Course.xlsx"
 
@@ -27,18 +28,22 @@ for var_name, question_text in var_to_question.items():
 
     if len(valid_responses) > 0:
         print(f"Processing Likert question: {var_name} - {question_text}")
+
+        grouped_data = valid_responses.groupby(f"{var_name}_numeric").size()
+        #total_valid = len(valid_responses)
+
         for likert in range(1, 6):
-            count = len(response_data[response_data[f"{var_name}_numeric"] == likert])
+            count = grouped_data.get(likert, 0)
             total_valid = len(valid_responses)
-            percentage = int((count / total_valid) * 100) if total_valid > 0 else 0
+            percentage = round(float((count / total_valid) * 100), 2) if total_valid > 0 else 0
 
             all_results.append({
                 "type": "likert",
                 "variable": var_name,
                 "question": question_text,
-                "likert": str(likert),
-                "count": count,
-                "percentage": percentage
+                "likert": int(likert),
+                "count": int(count),
+                "percentage": float(percentage)
             })
     else:
         # Treat as open-ended question

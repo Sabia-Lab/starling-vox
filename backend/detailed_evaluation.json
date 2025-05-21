@@ -1,0 +1,665 @@
+[
+    {
+        "type": "likert",
+        "variable": "VAR00",
+        "question": "I find the course intellectually challenging and stimulating.",
+        "likert": 1,
+        "count": 1,
+        "percentage": 3.57
+    },
+    {
+        "type": "likert",
+        "variable": "VAR00",
+        "question": "I find the course intellectually challenging and stimulating.",
+        "likert": 2,
+        "count": 1,
+        "percentage": 3.57
+    },
+    {
+        "type": "likert",
+        "variable": "VAR00",
+        "question": "I find the course intellectually challenging and stimulating.",
+        "likert": 3,
+        "count": 2,
+        "percentage": 7.14
+    },
+    {
+        "type": "likert",
+        "variable": "VAR00",
+        "question": "I find the course intellectually challenging and stimulating.",
+        "likert": 4,
+        "count": 7,
+        "percentage": 25.0
+    },
+    {
+        "type": "likert",
+        "variable": "VAR00",
+        "question": "I find the course intellectually challenging and stimulating.",
+        "likert": 5,
+        "count": 17,
+        "percentage": 60.71
+    },
+    {
+        "type": "likert",
+        "variable": "VAR01",
+        "question": "I have learned something that I consider valuable.",
+        "likert": 1,
+        "count": 1,
+        "percentage": 3.57
+    },
+    {
+        "type": "likert",
+        "variable": "VAR01",
+        "question": "I have learned something that I consider valuable.",
+        "likert": 2,
+        "count": 1,
+        "percentage": 3.57
+    },
+    {
+        "type": "likert",
+        "variable": "VAR01",
+        "question": "I have learned something that I consider valuable.",
+        "likert": 3,
+        "count": 2,
+        "percentage": 7.14
+    },
+    {
+        "type": "likert",
+        "variable": "VAR01",
+        "question": "I have learned something that I consider valuable.",
+        "likert": 4,
+        "count": 10,
+        "percentage": 35.71
+    },
+    {
+        "type": "likert",
+        "variable": "VAR01",
+        "question": "I have learned something that I consider valuable.",
+        "likert": 5,
+        "count": 14,
+        "percentage": 50.0
+    },
+    {
+        "type": "likert",
+        "variable": "VAR02",
+        "question": "The instructor is enthusiastic about teaching the course.",
+        "likert": 1,
+        "count": 4,
+        "percentage": 14.29
+    },
+    {
+        "type": "likert",
+        "variable": "VAR02",
+        "question": "The instructor is enthusiastic about teaching the course.",
+        "likert": 2,
+        "count": 2,
+        "percentage": 7.14
+    },
+    {
+        "type": "likert",
+        "variable": "VAR02",
+        "question": "The instructor is enthusiastic about teaching the course.",
+        "likert": 3,
+        "count": 5,
+        "percentage": 17.86
+    },
+    {
+        "type": "likert",
+        "variable": "VAR02",
+        "question": "The instructor is enthusiastic about teaching the course.",
+        "likert": 4,
+        "count": 11,
+        "percentage": 39.29
+    },
+    {
+        "type": "likert",
+        "variable": "VAR02",
+        "question": "The instructor is enthusiastic about teaching the course.",
+        "likert": 5,
+        "count": 6,
+        "percentage": 21.43
+    },
+    {
+        "type": "likert",
+        "variable": "VAR03",
+        "question": "The instructor's style of presentation holds your interestduring class.",
+        "likert": 1,
+        "count": 10,
+        "percentage": 35.71
+    },
+    {
+        "type": "likert",
+        "variable": "VAR03",
+        "question": "The instructor's style of presentation holds your interestduring class.",
+        "likert": 2,
+        "count": 1,
+        "percentage": 3.57
+    },
+    {
+        "type": "likert",
+        "variable": "VAR03",
+        "question": "The instructor's style of presentation holds your interestduring class.",
+        "likert": 3,
+        "count": 7,
+        "percentage": 25.0
+    },
+    {
+        "type": "likert",
+        "variable": "VAR03",
+        "question": "The instructor's style of presentation holds your interestduring class.",
+        "likert": 4,
+        "count": 8,
+        "percentage": 28.57
+    },
+    {
+        "type": "likert",
+        "variable": "VAR03",
+        "question": "The instructor's style of presentation holds your interestduring class.",
+        "likert": 5,
+        "count": 2,
+        "percentage": 7.14
+    },
+    {
+        "type": "likert",
+        "variable": "VAR04",
+        "question": "The instructor's explanations are clear.",
+        "likert": 1,
+        "count": 7,
+        "percentage": 25.0
+    },
+    {
+        "type": "likert",
+        "variable": "VAR04",
+        "question": "The instructor's explanations are clear.",
+        "likert": 2,
+        "count": 4,
+        "percentage": 14.29
+    },
+    {
+        "type": "likert",
+        "variable": "VAR04",
+        "question": "The instructor's explanations are clear.",
+        "likert": 3,
+        "count": 6,
+        "percentage": 21.43
+    },
+    {
+        "type": "likert",
+        "variable": "VAR04",
+        "question": "The instructor's explanations are clear.",
+        "likert": 4,
+        "count": 9,
+        "percentage": 32.14
+    },
+    {
+        "type": "likert",
+        "variable": "VAR04",
+        "question": "The instructor's explanations are clear.",
+        "likert": 5,
+        "count": 2,
+        "percentage": 7.14
+    },
+    {
+        "type": "likert",
+        "variable": "VAR05",
+        "question": "The instructor made required material available on time.",
+        "likert": 1,
+        "count": 3,
+        "percentage": 10.71
+    },
+    {
+        "type": "likert",
+        "variable": "VAR05",
+        "question": "The instructor made required material available on time.",
+        "likert": 2,
+        "count": 1,
+        "percentage": 3.57
+    },
+    {
+        "type": "likert",
+        "variable": "VAR05",
+        "question": "The instructor made required material available on time.",
+        "likert": 3,
+        "count": 4,
+        "percentage": 14.29
+    },
+    {
+        "type": "likert",
+        "variable": "VAR05",
+        "question": "The instructor made required material available on time.",
+        "likert": 4,
+        "count": 8,
+        "percentage": 28.57
+    },
+    {
+        "type": "likert",
+        "variable": "VAR05",
+        "question": "The instructor made required material available on time.",
+        "likert": 5,
+        "count": 12,
+        "percentage": 42.86
+    },
+    {
+        "type": "likert",
+        "variable": "VAR06",
+        "question": "The instructor prepared and explained the lecture materials (slides, videos, quizzes) carefully.",
+        "likert": 1,
+        "count": 7,
+        "percentage": 25.0
+    },
+    {
+        "type": "likert",
+        "variable": "VAR06",
+        "question": "The instructor prepared and explained the lecture materials (slides, videos, quizzes) carefully.",
+        "likert": 2,
+        "count": 4,
+        "percentage": 14.29
+    },
+    {
+        "type": "likert",
+        "variable": "VAR06",
+        "question": "The instructor prepared and explained the lecture materials (slides, videos, quizzes) carefully.",
+        "likert": 3,
+        "count": 4,
+        "percentage": 14.29
+    },
+    {
+        "type": "likert",
+        "variable": "VAR06",
+        "question": "The instructor prepared and explained the lecture materials (slides, videos, quizzes) carefully.",
+        "likert": 4,
+        "count": 11,
+        "percentage": 39.29
+    },
+    {
+        "type": "likert",
+        "variable": "VAR06",
+        "question": "The instructor prepared and explained the lecture materials (slides, videos, quizzes) carefully.",
+        "likert": 5,
+        "count": 2,
+        "percentage": 7.14
+    },
+    {
+        "type": "likert",
+        "variable": "VAR07",
+        "question": "Students are encouraged to ask questions and are given meaningful answers.",
+        "likert": 1,
+        "count": 5,
+        "percentage": 17.86
+    },
+    {
+        "type": "likert",
+        "variable": "VAR07",
+        "question": "Students are encouraged to ask questions and are given meaningful answers.",
+        "likert": 2,
+        "count": 0,
+        "percentage": 0.0
+    },
+    {
+        "type": "likert",
+        "variable": "VAR07",
+        "question": "Students are encouraged to ask questions and are given meaningful answers.",
+        "likert": 3,
+        "count": 8,
+        "percentage": 28.57
+    },
+    {
+        "type": "likert",
+        "variable": "VAR07",
+        "question": "Students are encouraged to ask questions and are given meaningful answers.",
+        "likert": 4,
+        "count": 6,
+        "percentage": 21.43
+    },
+    {
+        "type": "likert",
+        "variable": "VAR07",
+        "question": "Students are encouraged to ask questions and are given meaningful answers.",
+        "likert": 5,
+        "count": 9,
+        "percentage": 32.14
+    },
+    {
+        "type": "likert",
+        "variable": "VAR08",
+        "question": "The instructor makes students feel welcome in seeking help/advice in or outside of class.",
+        "likert": 1,
+        "count": 7,
+        "percentage": 25.0
+    },
+    {
+        "type": "likert",
+        "variable": "VAR08",
+        "question": "The instructor makes students feel welcome in seeking help/advice in or outside of class.",
+        "likert": 2,
+        "count": 3,
+        "percentage": 10.71
+    },
+    {
+        "type": "likert",
+        "variable": "VAR08",
+        "question": "The instructor makes students feel welcome in seeking help/advice in or outside of class.",
+        "likert": 3,
+        "count": 6,
+        "percentage": 21.43
+    },
+    {
+        "type": "likert",
+        "variable": "VAR08",
+        "question": "The instructor makes students feel welcome in seeking help/advice in or outside of class.",
+        "likert": 4,
+        "count": 8,
+        "percentage": 28.57
+    },
+    {
+        "type": "likert",
+        "variable": "VAR08",
+        "question": "The instructor makes students feel welcome in seeking help/advice in or outside of class.",
+        "likert": 5,
+        "count": 4,
+        "percentage": 14.29
+    },
+    {
+        "type": "likert",
+        "variable": "VAR09",
+        "question": "The instructor contrasts the implications of various theories, techniques, frameworks, processes, tools.",
+        "likert": 1,
+        "count": 1,
+        "percentage": 3.7
+    },
+    {
+        "type": "likert",
+        "variable": "VAR09",
+        "question": "The instructor contrasts the implications of various theories, techniques, frameworks, processes, tools.",
+        "likert": 2,
+        "count": 2,
+        "percentage": 7.41
+    },
+    {
+        "type": "likert",
+        "variable": "VAR09",
+        "question": "The instructor contrasts the implications of various theories, techniques, frameworks, processes, tools.",
+        "likert": 3,
+        "count": 5,
+        "percentage": 18.52
+    },
+    {
+        "type": "likert",
+        "variable": "VAR09",
+        "question": "The instructor contrasts the implications of various theories, techniques, frameworks, processes, tools.",
+        "likert": 4,
+        "count": 15,
+        "percentage": 55.56
+    },
+    {
+        "type": "likert",
+        "variable": "VAR09",
+        "question": "The instructor contrasts the implications of various theories, techniques, frameworks, processes, tools.",
+        "likert": 5,
+        "count": 4,
+        "percentage": 14.81
+    },
+    {
+        "type": "likert",
+        "variable": "VAR10",
+        "question": "Feedback on graded materials (assignments, labs, projects, essay, etc.) was valuable.",
+        "likert": 1,
+        "count": 8,
+        "percentage": 28.57
+    },
+    {
+        "type": "likert",
+        "variable": "VAR10",
+        "question": "Feedback on graded materials (assignments, labs, projects, essay, etc.) was valuable.",
+        "likert": 2,
+        "count": 3,
+        "percentage": 10.71
+    },
+    {
+        "type": "likert",
+        "variable": "VAR10",
+        "question": "Feedback on graded materials (assignments, labs, projects, essay, etc.) was valuable.",
+        "likert": 3,
+        "count": 8,
+        "percentage": 28.57
+    },
+    {
+        "type": "likert",
+        "variable": "VAR10",
+        "question": "Feedback on graded materials (assignments, labs, projects, essay, etc.) was valuable.",
+        "likert": 4,
+        "count": 8,
+        "percentage": 28.57
+    },
+    {
+        "type": "likert",
+        "variable": "VAR10",
+        "question": "Feedback on graded materials (assignments, labs, projects, essay, etc.) was valuable.",
+        "likert": 5,
+        "count": 1,
+        "percentage": 3.57
+    },
+    {
+        "type": "likert",
+        "variable": "VAR11",
+        "question": "Methods of evaluating student work were fair and appropriate.",
+        "likert": 1,
+        "count": 5,
+        "percentage": 17.86
+    },
+    {
+        "type": "likert",
+        "variable": "VAR11",
+        "question": "Methods of evaluating student work were fair and appropriate.",
+        "likert": 2,
+        "count": 3,
+        "percentage": 10.71
+    },
+    {
+        "type": "likert",
+        "variable": "VAR11",
+        "question": "Methods of evaluating student work were fair and appropriate.",
+        "likert": 3,
+        "count": 5,
+        "percentage": 17.86
+    },
+    {
+        "type": "likert",
+        "variable": "VAR11",
+        "question": "Methods of evaluating student work were fair and appropriate.",
+        "likert": 4,
+        "count": 9,
+        "percentage": 32.14
+    },
+    {
+        "type": "likert",
+        "variable": "VAR11",
+        "question": "Methods of evaluating student work were fair and appropriate.",
+        "likert": 5,
+        "count": 6,
+        "percentage": 21.43
+    },
+    {
+        "type": "likert",
+        "variable": "VAR12",
+        "question": "Grading criteria for the graded materials are clear.",
+        "likert": 1,
+        "count": 9,
+        "percentage": 32.14
+    },
+    {
+        "type": "likert",
+        "variable": "VAR12",
+        "question": "Grading criteria for the graded materials are clear.",
+        "likert": 2,
+        "count": 4,
+        "percentage": 14.29
+    },
+    {
+        "type": "likert",
+        "variable": "VAR12",
+        "question": "Grading criteria for the graded materials are clear.",
+        "likert": 3,
+        "count": 1,
+        "percentage": 3.57
+    },
+    {
+        "type": "likert",
+        "variable": "VAR12",
+        "question": "Grading criteria for the graded materials are clear.",
+        "likert": 4,
+        "count": 11,
+        "percentage": 39.29
+    },
+    {
+        "type": "likert",
+        "variable": "VAR12",
+        "question": "Grading criteria for the graded materials are clear.",
+        "likert": 5,
+        "count": 3,
+        "percentage": 10.71
+    },
+    {
+        "type": "likert",
+        "variable": "VAR13",
+        "question": "In average, hours/week I have spent in this course",
+        "likert": 1,
+        "count": 0,
+        "percentage": 0.0
+    },
+    {
+        "type": "likert",
+        "variable": "VAR13",
+        "question": "In average, hours/week I have spent in this course",
+        "likert": 2,
+        "count": 0,
+        "percentage": 0.0
+    },
+    {
+        "type": "likert",
+        "variable": "VAR13",
+        "question": "In average, hours/week I have spent in this course",
+        "likert": 3,
+        "count": 3,
+        "percentage": 20.0
+    },
+    {
+        "type": "likert",
+        "variable": "VAR13",
+        "question": "In average, hours/week I have spent in this course",
+        "likert": 4,
+        "count": 4,
+        "percentage": 26.67
+    },
+    {
+        "type": "likert",
+        "variable": "VAR13",
+        "question": "In average, hours/week I have spent in this course",
+        "likert": 5,
+        "count": 8,
+        "percentage": 53.33
+    },
+    {
+        "type": "likert",
+        "variable": "VAR14",
+        "question": "The course structure, teaching, and assessment were designed so that I feel that I have been able to learn and be assessed on equal terms as other students in the course",
+        "likert": 1,
+        "count": 2,
+        "percentage": 7.14
+    },
+    {
+        "type": "likert",
+        "variable": "VAR14",
+        "question": "The course structure, teaching, and assessment were designed so that I feel that I have been able to learn and be assessed on equal terms as other students in the course",
+        "likert": 2,
+        "count": 1,
+        "percentage": 3.57
+    },
+    {
+        "type": "likert",
+        "variable": "VAR14",
+        "question": "The course structure, teaching, and assessment were designed so that I feel that I have been able to learn and be assessed on equal terms as other students in the course",
+        "likert": 3,
+        "count": 6,
+        "percentage": 21.43
+    },
+    {
+        "type": "likert",
+        "variable": "VAR14",
+        "question": "The course structure, teaching, and assessment were designed so that I feel that I have been able to learn and be assessed on equal terms as other students in the course",
+        "likert": 4,
+        "count": 10,
+        "percentage": 35.71
+    },
+    {
+        "type": "likert",
+        "variable": "VAR14",
+        "question": "The course structure, teaching, and assessment were designed so that I feel that I have been able to learn and be assessed on equal terms as other students in the course",
+        "likert": 5,
+        "count": 9,
+        "percentage": 32.14
+    },
+    {
+        "type": "open-ended",
+        "variable": "VAR15",
+        "question": "What are the three things you liked the most about the course?",
+        "answers": [
+            "The course structure, the teacher\u2019s enthusiasm, and the TA support.",
+            "I really liked learning how to use Git. The final project was also really fun.",
+            "1. Hands-on exercises  2. Clear explanations  3. Friendly atmosphere",
+            "The content was challenging but rewarding. I especially enjoyed the guest lectures.",
+            "- Field trip to Volvo  - Tinkercad assignments  - Learning C",
+            "Lecture recordings, in-class quizzes, and how available the TAs were for help.",
+            "The way the course was designed helped me stay engaged.",
+            "The lab sessions.",
+            "1. Learning new tools like Arduino  2. Working with real hardware  3. The bonus challenges",
+            "I appreciated the pacing, especially how we had time to absorb complex topics.",
+            "- Teaching assistants  - Small coding tasks  - Field work",
+            "I liked: a) how interactive the lectures were  b) working in teams  c) the practical use cases we explored",
+            "In my opinion, the course covered too much, but I did enjoy learning Python, doing the group project, and seeing how coding applies to the real world.",
+            "Just the Arduino kits \u2014 they were fun.",
+            "1. Structured assignments  2. Good use of Canvas  3. Clear grading criteria",
+            "Everything felt useful! Especially the hardware demos and how the TAs handled questions.",
+            "The teacher, the teacher, the teacher!",
+            "Honestly, just two things: 1. Working with real devices  2. The Volvo visit",
+            "I liked the vibe of the course and how it encouraged us to be creative.",
+            "Field trip, the Skagerrak thing, and the lab sessions. Those stood out.",
+            "1. Physical computing aspect  2. Weekly reflection tasks  3. Open Q&A style lectures",
+            "A very friendly environment, lots of chances to ask questions, and great slides.",
+            "Too much theory at times, but I loved the applied labs and the final demo day.",
+            "The R/V Skagerrak was awesome. Working with hardware was new for me. Also, thanks for recording some of the lectures!",
+            "I mostly liked how we could talk to the TAs anytime. Also, I got to code in C for the first time."
+        ]
+    },
+    {
+        "type": "open-ended",
+        "variable": "VAR16",
+        "question": "What are the three things you liked the least aboutthe course?",
+        "answers": [
+            "Sometimes the lectures felt too long, especially in the afternoon sessions.",
+            "The grading criteria for the project were a bit unclear.",
+            "1. Lack of full lecture recordings  2. Too much theory before hands-on parts  3. Unclear deadlines",
+            "The feedback on assignments took too long.",
+            "- The room was too small  - Not enough time for Q&A  - Lecture slides sometimes missing",
+            "I didn't like how disorganized the group project was.",
+            "The Canvas page was cluttered and hard to navigate.",
+            "Not enough feedback on our code.",
+            "1. Very little explanation of the lab setup  2. No practice exam  3. Random quiz timing",
+            "Sometimes the teacher spoke too fast for me to follow.",
+            "The field trip was cool but took a lot of time during a busy week.",
+            "The project groups were uneven in workload.",
+            "1. Project instructions were vague  2. Too many announcements  3. Unclear exam format",
+            "Nothing major, but some lectures could be more engaging.",
+            "TA availability was limited in the weeks before the deadline.",
+            "The hardware kits sometimes didn\u2019t work and it slowed us down.",
+            "I liked the course overall, but didn\u2019t love the way feedback was handled.",
+            "Lectures were sometimes too dense with slides.",
+            "I would have liked more live coding demos instead of theory slides.",
+            "1. The schedule felt rushed  2. Some tasks were hard to debug  3. Group work stress",
+            "It wasn\u2019t always clear how assignments connected to the final goals.",
+            "Some classmates didn\u2019t contribute in group work, which was frustrating.",
+            "Parts of the course felt too focused on engineering and not enough on creativity.",
+            "Lecture times changed a lot, which was confusing."
+        ]
+    }
+]
