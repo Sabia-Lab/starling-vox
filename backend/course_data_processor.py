@@ -61,8 +61,8 @@ for var_name, question_text in var_to_question.items():
 with open("likert_evaluation.json", "w") as f:
     json.dump(likert_results, f, indent=4)
 
-with open("open_ended_evaluation.json", "w") as f:
-    json.dump(open_ended_results, f, indent=4)
+with open("open_ended_evaluation.json", "w", encoding="utf-8") as f:
+    json.dump(open_ended_results, f, indent=4, ensure_ascii=False)
 
 print(f"Processing complete. Data saved to {likert_results} and {open_ended_results}")
 
