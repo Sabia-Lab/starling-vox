@@ -3,7 +3,6 @@ import json
 
 # need to fix json file name
 # handle null values (or 0)
-# percantage
 
 excel_file = "./data/DIT333 Fake Course.xlsx"
 
@@ -15,10 +14,11 @@ response_data = pd.read_excel(excel_file, sheet_name="Data")
 var_to_question = {
     row['Variable Name']: row['Label']
     for _, row in variable_data.iterrows()
-    if pd.notna(row['Label'])
+    #if pd.notna(row['Label'])
 }
 
-all_results = []
+open_ended_results = []
+likert_results = []
 
 for var_name, question_text in var_to_question.items():
     # Try to coerce numeric for Likert-type questions
@@ -37,7 +37,7 @@ for var_name, question_text in var_to_question.items():
             total_valid = len(valid_responses)
             percentage = round(float((count / total_valid) * 100), 2) if total_valid > 0 else 0
 
-            all_results.append({
+            likert_results.append({
                 "type": "likert",
                 "variable": var_name,
                 "question": question_text,
@@ -50,21 +50,19 @@ for var_name, question_text in var_to_question.items():
         open_ended_answers = response_data[var_name].dropna().astype(str).tolist()
         print(f"Processing open-ended question: {var_name} - {question_text}")
 
-        all_results.append({
+        open_ended_results.append({
             "type": "open-ended",
             "variable": var_name,
             "question": question_text,
             "answers": open_ended_answers
         })
 
-# Output to JSON
-output_file = "detailed_evaluation.json" # fix name
-with open(output_file, 'w') as f:
-    json.dump(all_results, f, indent=4)
 
-print(f"Processing complete. Data saved to {output_file}")
+with open("likert_evaluation.json", "w") as f:
+    json.dump(likert_results, f, indent=4)
 
-# Preview sample
-print("\nSample of the output:")
-for i, item in enumerate(all_results[:6]):
-    print(json.dumps(item, indent=2))
+with open("open_ended_evaluation.json", "w") as f:
+    json.dump(open_ended_results, f, indent=4)
+
+print(f"Processing complete. Data saved to {likert_results} and {open_ended_results}")
+
