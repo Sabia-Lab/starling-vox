@@ -1,68 +1,76 @@
 import pandas as pd
 import json
 
+# all_results = []
+
 # need to fix json file name
 # handle null values (or 0)
 
-excel_file = "./data/DIT333 Fake Course.xlsx"
+def read_file():
+ excel_file = "backend/data/DIT333 Fake Course.xlsx"
 
-print("Reading Excel file...")
-variable_data = pd.read_excel(excel_file, sheet_name="VariableView")
-response_data = pd.read_excel(excel_file, sheet_name="Data")
+ print("Reading Excel file...")
+ variable_data = pd.read_excel(excel_file, sheet_name="VariableView")
+ response_data = pd.read_excel(excel_file, sheet_name="Data")
+ 
+ return variable_data,response_data
 
-# Map variable names to questions
-var_to_question = {
-    row['Variable Name']: row['Label']
-    for _, row in variable_data.iterrows()
-    #if pd.notna(row['Label'])
-}
+def map_variables_to_questions(variable_data):
+  var_to_question={}
+  for index , row in variable_data.iterrows():
+    var_to_question[row['Variable Name']] = row['Label']
+         
+  return var_to_question
 
-open_ended_results = []
-likert_results = []
+def extract_likert_questions(response_data, var_to_question, results):
+   for var_name, question_text in var_to_question.items():
+    if not pd.api.types.is_numeric_dtype(response_data[var_name]):
+     continue
+       
+    coulumn_data = response_data[var_name]
+    valid_responses = coulumn_data[(coulumn_data>=1) & (coulumn_data<=5)]
+        
+    counts = valid_responses.groupby(valid_responses).count()
+    total_valid = counts.sum()
 
-for var_name, question_text in var_to_question.items():
-    # Try to coerce numeric for Likert-type questions
-    # coerce is used since It allows the script to cleanly skip open-ended responses during Likert processing, and detect them later as text fields
-    response_data[f"{var_name}_numeric"] = pd.to_numeric(response_data[var_name], errors='coerce')
-    valid_responses = response_data[response_data[f"{var_name}_numeric"].between(1, 5)]
-
-    if len(valid_responses) > 0:
-        print(f"Processing Likert question: {var_name} - {question_text}")
-
-        grouped_data = valid_responses.groupby(f"{var_name}_numeric").size()
-        #total_valid = len(valid_responses)
-
-        for likert in range(1, 6):
-            count = grouped_data.get(likert, 0)
-            total_valid = len(valid_responses)
-            percentage = round(float((count / total_valid) * 100), 2) if total_valid > 0 else 0
-
-            likert_results.append({
-                "type": "likert",
-                "variable": var_name,
-                "question": question_text,
-                "likert": int(likert),
-                "count": int(count),
-                "percentage": float(percentage)
-            })
-    else:
-        # Treat as open-ended question
-        open_ended_answers = response_data[var_name].dropna().astype(str).tolist()
-        print(f"Processing open-ended question: {var_name} - {question_text}")
-
-        open_ended_results.append({
-            "type": "open-ended",
+    print(f"Processing Likert question: {var_name} - {question_text}")
+    for likert_value, count in counts.items():
+        percentage = round(float((count / total_valid) * 100), 2)  if total_valid > 0 else 0
+        results.append({
+            "type": "likert",
             "variable": var_name,
             "question": question_text,
-            "answers": open_ended_answers
+            "likert": int(likert_value),
+            "count": int(count),
+            "percentage": float(percentage)
         })
+ 
+def extract_open_ended_questions(response_data,var_to_question, results):
+    for var_name, question_text in var_to_question.items():
+     if not pd.api.types.is_object_dtype(response_data[var_name]):
+      continue 
 
+        # Treat as open-ended question
+     open_ended_answers = response_data[var_name].dropna().astype(str).tolist()
+     print(f"Processing open-ended question: {var_name} - {question_text}")
 
-with open("likert_evaluation.json", "w") as f:
-    json.dump(likert_results, f, indent=4)
+     results.append({
+        "type": "open-ended",
+        "variable": var_name,
+        "question": question_text,
+        "answers": open_ended_answers
+    })
 
-with open("open_ended_evaluation.json", "w", encoding="utf-8") as f:
-    json.dump(open_ended_results, f, indent=4, ensure_ascii=False)
+def write_to_json(likert_results, open_ended_results):
+ files = { 
+    "likert_results.json": likert_results,
+    "open_ended_results.json": open_ended_results
+ }
 
-print(f"Processing complete. Data saved to {likert_results} and {open_ended_results}")
+ for filename, data in files.items():
+  with open(filename, 'w') as file:
+    json.dump(data, file, indent=4)
+
+ print("Processing complete. Data saved to 'likert_results.json' and 'open_ended_results.json'")
+
 
