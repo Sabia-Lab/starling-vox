@@ -5,9 +5,17 @@ import json
 # TODO: need to fix json file name
 # TODO: handle null values (or 0)
 
-def read_file():
-    excel_file = "backend/data/DIT333 Fake Course.xlsx"
+def parse_and_convert_course_evaluation(file_path):
+    variable_data, response_data = read_file(file_path)
 
+    var_to_question = map_variables_to_questions(variable_data)
+    
+    likert_results = extract_likert_questions(response_data, var_to_question)
+    open_ended_results = extract_open_ended_questions(response_data, var_to_question)
+    
+    write_to_json(likert_results, open_ended_results)
+
+def read_file(excel_file):
     print("Reading Excel file...")
     variable_data = pd.read_excel(excel_file, sheet_name="VariableView")
     response_data = pd.read_excel(excel_file, sheet_name="Data")
@@ -24,31 +32,36 @@ def map_variables_to_questions(variable_data):
 
 # Extracts Likert-scale responses (1–5) and calculates counts and percentages
 
-def extract_likert_questions(response_data, var_to_question, results):
+def extract_likert_questions(response_data, var_to_question):
+    results = []
+
     for var_name, question_text in var_to_question.items():
         #skips the columns that are not numeric
         if not pd.api.types.is_numeric_dtype(response_data[var_name]): 
             continue
-             
+
         column_data = response_data[var_name]
         valid_responses = column_data[(column_data>=1) & (column_data<=5)]
-                
         counts = valid_responses.groupby(valid_responses).count()
         total_valid = counts.sum()
 
         print(f"Processing Likert question: {var_name} - {question_text}")
         for likert_value, count in counts.items():
-                percentage = round(float((count / total_valid) * 100), 2)    if total_valid > 0 else 0
-                results.append({
-                        "type": "likert",
-                        "variable": var_name,
-                        "question": question_text,
-                        "likert": int(likert_value),
-                        "count": int(count),
-                        "percentage": float(percentage)
-                })
+            percentage = round(float((count / total_valid) * 100), 2) if total_valid > 0 else 0
+            results.append({
+                "type": "likert",
+                "variable": var_name,
+                "question": question_text,
+                "likert": int(likert_value),
+                "count": int(count),
+                "percentage": float(percentage)
+            })
+    
+    return results
  
-def extract_open_ended_questions(response_data,var_to_question, results):
+def extract_open_ended_questions(response_data, var_to_question):
+    results = []
+
     for var_name, question_text in var_to_question.items():
         #skips the columns that are not text(strings are stored as object dtype in pandas)
         if not pd.api.types.is_object_dtype(response_data[var_name]): 
@@ -59,11 +72,13 @@ def extract_open_ended_questions(response_data,var_to_question, results):
         print(f"Processing open-ended question: {var_name} - {question_text}")
 
         results.append({
-                "type": "open-ended",
-                "variable": var_name,
-                "question": question_text,
-                "answers": open_ended_answers
+            "type": "open-ended",
+            "variable": var_name,
+            "question": question_text,
+            "answers": open_ended_answers
         })
+
+    return results
 
 def write_to_json(likert_results, open_ended_results):
     files = { 
