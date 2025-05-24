@@ -6,7 +6,7 @@ import json
 # TODO: handle null values (or 0)
 
 def parse_and_convert_course_evaluation(file_path):
-    variable_data, response_data = read_file(file_path)
+    variable_data, response_data = read_excel_file(file_path)
 
     var_to_question = map_variables_to_questions(variable_data)
     
@@ -21,12 +21,12 @@ def parse_and_convert_course_evaluation(file_path):
     write_to_json(likert_file_name, likert_results)
     write_to_json(open_ended_file_name, open_ended_results)
 
-def read_file(excel_file):
+def read_excel_file(excel_file):
     print("Reading Excel file...")
     variable_data = pd.read_excel(excel_file, sheet_name="VariableView")
     response_data = pd.read_excel(excel_file, sheet_name="Data")
  
-    return variable_data,response_data
+    return variable_data, response_data
 
 def map_variables_to_questions(variable_data):
     var_to_question={}
@@ -36,7 +36,7 @@ def map_variables_to_questions(variable_data):
     return var_to_question
 
 
-# Extracts Likert-scale responses (1–5) and calculates counts and percentages
+# Extracts Likert-scale responses (1–6) and calculates counts and percentages
 
 def extract_likert_questions(response_data, var_to_question):
     results = []
@@ -47,13 +47,14 @@ def extract_likert_questions(response_data, var_to_question):
             continue
 
         column_data = response_data[var_name]
-        valid_responses = column_data[(column_data>=1) & (column_data<=5)]
+        valid_responses = column_data[(column_data>=0) & (column_data<=6)]
         counts = valid_responses.groupby(valid_responses).count()
-        total_valid = counts.sum()
+        total_valid = counts.loc[1:6].sum()
 
         print(f"Processing Likert question: {var_name} - {question_text}")
         for likert_value, count in counts.items():
-            percentage = round(float((count / total_valid) * 100), 2) if total_valid > 0 else 0
+            not_zero = int(likert_value) != 0
+            percentage = round(float((count / total_valid) * 100), 2) if total_valid > 0 and not_zero else 0
             results.append({
                 "type": "likert",
                 "variable": var_name,

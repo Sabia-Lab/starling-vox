@@ -355,6 +355,14 @@
         "type": "likert",
         "variable": "VAR09",
         "question": "The instructor contrasts the implications of various theories, techniques, frameworks, processes, tools.",
+        "likert": 0,
+        "count": 1,
+        "percentage": 0.0
+    },
+    {
+        "type": "likert",
+        "variable": "VAR09",
+        "question": "The instructor contrasts the implications of various theories, techniques, frameworks, processes, tools.",
         "likert": 1,
         "count": 1,
         "percentage": 3.7
@@ -517,7 +525,7 @@
         "question": "In average, hours/week I have spent in this course",
         "likert": 3,
         "count": 3,
-        "percentage": 20.0
+        "percentage": 10.71
     },
     {
         "type": "likert",
@@ -525,7 +533,7 @@
         "question": "In average, hours/week I have spent in this course",
         "likert": 4,
         "count": 4,
-        "percentage": 26.67
+        "percentage": 14.29
     },
     {
         "type": "likert",
@@ -533,7 +541,15 @@
         "question": "In average, hours/week I have spent in this course",
         "likert": 5,
         "count": 8,
-        "percentage": 53.33
+        "percentage": 28.57
+    },
+    {
+        "type": "likert",
+        "variable": "VAR13",
+        "question": "In average, hours/week I have spent in this course",
+        "likert": 6,
+        "count": 13,
+        "percentage": 46.43
     },
     {
         "type": "likert",
