@@ -13,7 +13,7 @@ def main():
     extract_likert_questions(response_data, var_to_question, likert_results)
     extract_open_ended_questions(response_data, var_to_question, open_ended_results)
     
-    write_to_json(likert_results,open_ended_results)
+    write_to_json(likert_results, open_ended_results)
 
 if __name__ == "__main__":
     main()
