@@ -12,8 +12,14 @@ def parse_and_convert_course_evaluation(file_path):
     
     likert_results = extract_likert_questions(response_data, var_to_question)
     open_ended_results = extract_open_ended_questions(response_data, var_to_question)
-    
-    write_to_json(likert_results, open_ended_results)
+
+    # Format new file names
+    json_file_name = file_path[:-5]
+    open_ended_file_name = json_file_name + " Open Ended.json"
+    likert_file_name = json_file_name + " Likert.json"
+
+    write_to_json(likert_file_name, likert_results)
+    write_to_json(open_ended_file_name, open_ended_results)
 
 def read_file(excel_file):
     print("Reading Excel file...")
@@ -80,14 +86,8 @@ def extract_open_ended_questions(response_data, var_to_question):
 
     return results
 
-def write_to_json(likert_results, open_ended_results):
-    files = { 
-        "likert_results.json": likert_results,
-        "open_ended_results.json": open_ended_results
-    }
+def write_to_json(filename, data):
+    with open(filename, 'w') as file:
+        json.dump(data, file, indent=4)
 
-    for filename, data in files.items():
-        with open(filename, 'w') as file:
-            json.dump(data, file, indent=4)
-
-    print("Processing complete. Data saved to 'likert_results.json' and 'open_ended_results.json'")
+    print(f"Processing complete. Data saved to {filename}")
