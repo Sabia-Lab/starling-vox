@@ -1,9 +1,10 @@
 import pandas as pd
 import json
+import os
 
 
-# TODO: need to fix json file name
-# TODO: handle null values (or 0)
+# TODO: handle special characters in open-ended questions
+# TODO: fix json formatting in likert questions
 
 def parse_and_convert_course_evaluation(file_path):
     variable_data, response_data = read_excel_file(file_path)
@@ -13,10 +14,15 @@ def parse_and_convert_course_evaluation(file_path):
     likert_results = extract_likert_questions(response_data, var_to_question)
     open_ended_results = extract_open_ended_questions(response_data, var_to_question)
 
-    # Format new file names
-    json_file_name = file_path[:-5]
-    open_ended_file_name = json_file_name + " Open Ended.json"
-    likert_file_name = json_file_name + " Likert.json"
+    json_results_dir = "json_results"
+
+    # Create json_results directory if it does not already exist
+    os.makedirs(json_results_dir, exist_ok=True)
+
+    # Format new file names with json_results folder
+    json_file_name = os.path.basename(file_path)[:-5]
+    open_ended_file_name = os.path.join(json_results_dir, json_file_name + " Open Ended.json")
+    likert_file_name = os.path.join(json_results_dir, json_file_name + " Likert.json")
 
     write_to_json(likert_file_name, likert_results)
     write_to_json(open_ended_file_name, open_ended_results)
