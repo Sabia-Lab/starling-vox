@@ -94,7 +94,7 @@ def extract_open_ended_questions(response_data, var_to_question):
     return results
 
 def write_to_json(filename, data):
-    with open(filename, 'w') as file:
-        json.dump(data, file, indent=4)
+    with open(filename, 'w', encoding="utf-8") as file:
+        json.dump(data, file, indent=4, ensure_ascii=False)
 
     print(f"Processing complete. Data saved to {filename}")
