@@ -1,17 +1,35 @@
 'use client';
 
 import { useRef, useEffect } from "react";
-import embed, { VisualizationSpec} from 'vega-embed';
+import embed, { vega, VisualizationSpec} from 'vega-embed';
+import * as d3 from "d3"; // for creating theme from interpolation?
 
 export default function Page() {  
 
     const chartRef = useRef<HTMLDivElement>(null);
-
+    
     useEffect(() => {
         fetch('/data.json')
             .then((res) => res.json())
             .then((data) => {
                 const spec : VisualizationSpec = {
+                    config: {
+                        background: "var(--color-background)",
+                        axis: {
+                            titleColor: "var(--color-on-background)",
+                            labelColor: "var(--color-on-background)",
+                        },
+                        legend: {
+                            titleColor: "var(--color-on-background)", 
+                            labelColor: "var(--color-on-background)"
+                        },
+                        title:{
+                            color: "var(--color-on-background)"
+                        },
+                        //range: {
+                        //    ordinal: ADD VEGA SCHEME WHEN CREATED
+                        //}
+                    },
                     $schema: 'https://vega.github.io/schema/vega-lite/v6.json',
                     description: 'Course chart',               // add description as variable
                     data: {values: data},
@@ -62,7 +80,7 @@ export default function Page() {
                                 offset: 5,
                                 ticks: false,
                                 minExtent: 60, 
-                                domain: false
+                                domain: false,
                             }
                         },
                         //x: {aggregate: 'sum',
@@ -75,7 +93,7 @@ export default function Page() {
                             type: 'ordinal',
                             scale: {
                                 domain: ["1", "2", "3", "4", "5"],
-                                range: ["#d73027", "#fc8d59", "#fee08b", "#d9ef8B", "#1a9850"], // add custom colors as style variables?
+                                range: ["var(--color-primary)", "var(--color-secondary)", "var(--color-tertiary)", "var(--color-secondary)", "var(--color-primary)"], // fix colors - try to create a vega scheme?
                                 type: "ordinal"
                             },
                             legend: {title: "Likert scale"}
