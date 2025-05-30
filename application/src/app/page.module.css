@@ -12,12 +12,16 @@
   align-items: center;
   flex-direction: row;
   width: fit-content;
+  margin-bottom: 5vh;
 }
 
 .title {
-  font-size: 10vw;
+  font-size: 6vw;
+  color: #10144B;
+  font-family: Tahoma, Geneva, sans-serif;
 }
 
 .logo {
-  height: 10vw;
+  height: 8vw;
 }
+

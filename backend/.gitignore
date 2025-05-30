@@ -25,3 +25,5 @@ Temporary Items
 
 # Python
 __pycache__/
+
+package-lock.json
