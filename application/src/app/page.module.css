@@ -2,6 +2,7 @@
   display: flex;
   min-height: 100vh;
   flex-direction: column;
+  gap: 3vmin;
   align-items: center;
   justify-content: center;
 }
@@ -13,7 +14,6 @@
   flex-direction: row;
   gap: 3vw;
   width: fit-content;
-  margin-bottom: 5vh;
 }
 
 .title {
