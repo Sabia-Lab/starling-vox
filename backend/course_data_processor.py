@@ -10,15 +10,15 @@ def parse_and_convert_course_evaluation(file_path):
     likert_results = extract_likert_questions(response_data, var_to_question)
     open_ended_results = extract_open_ended_questions(response_data, var_to_question)
 
-    json_results_dir = "json_results"
+    evaluation_results_dir = "evaluation_results"
 
     # Create json_results directory if it does not already exist
-    os.makedirs(json_results_dir, exist_ok=True)
+    os.makedirs(evaluation_results_dir, exist_ok=True)
 
     # Format new file names with json_results folder
     json_file_name = os.path.basename(file_path)[:-5]
-    open_ended_file_name = os.path.join(json_results_dir, json_file_name + " Open Ended.json")
-    likert_file_name = os.path.join(json_results_dir, json_file_name + " Likert.json")
+    open_ended_file_name = os.path.join(evaluation_results_dir, json_file_name + " Open Ended.json")
+    likert_file_name = os.path.join(evaluation_results_dir, json_file_name + " Likert.json")
 
     write_to_json(likert_file_name, likert_results)
     write_to_json(open_ended_file_name, open_ended_results)
@@ -63,7 +63,6 @@ def extract_likert_questions(response_data, var_to_question):
         total_valid = counts.loc[1:6].sum()
 
         print(f"Processing Likert question: {var_name} - {question_text}")
-        # Convert variable name to Q format
         q_name = convert_var_to_q_format(var_name)
         # add questinon text
         results["questions"][q_name] = question_text
@@ -93,7 +92,6 @@ def extract_open_ended_questions(response_data, var_to_question):
         open_ended_answers = response_data[var_name].dropna().astype(str).tolist()
         print(f"Processing open-ended question: {var_name} - {question_text}")
 
-        # Convert variable name to Q format
         q_name = convert_var_to_q_format(var_name)
 
         results.append({
