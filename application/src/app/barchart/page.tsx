@@ -93,7 +93,7 @@ export default function Page() {
                             type: 'ordinal',
                             scale: {
                                 domain: ["1", "2", "3", "4", "5"],
-                                range: ["var(--color-primary)", "var(--color-secondary)", "var(--color-tertiary)", "var(--color-secondary)", "var(--color-primary)"], // fix colors - try to create a vega scheme?
+                                range: ["var(--color-diverging--2)", "var(--color-diverging--1)", "var(--color-diverging-0)", "var(--color-diverging-1)", "var(--color-diverging-2)"], // fix colors - try to create a vega scheme?
                                 type: "ordinal"
                             },
                             legend: {title: "Likert scale"}
