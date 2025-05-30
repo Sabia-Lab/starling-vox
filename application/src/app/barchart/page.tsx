@@ -6,6 +6,9 @@ import * as d3 from "d3"; // for creating theme from interpolation?
 
 export default function Page() {  
 
+    
+    const tickOffset = 10
+    const ticks = Array.from({ length: 21 }, (_, i) => -100 + (i * tickOffset) );
     const chartRef = useRef<HTMLDivElement>(null);
     
     useEffect(() => {
@@ -13,6 +16,8 @@ export default function Page() {
             .then((res) => res.json())
             .then((data) => {
                 const spec : VisualizationSpec = {
+                    width: 1000,   // ← Must be set here
+
                     config: {
                         background: "var(--color-background)",
                         axis: {
@@ -20,7 +25,7 @@ export default function Page() {
                             labelColor: "var(--color-on-background)",
                         },
                         legend: {
-                            titleColor: "var(--color-on-background)", 
+                            titleColor: "var(--color-on-background)",
                             labelColor: "var(--color-on-background)"
                         },
                         title:{
@@ -34,16 +39,17 @@ export default function Page() {
                     description: 'Course chart',               // add description as variable
                     data: {values: data},
                     transform: [
-                        {
-                            calculate: "if (datum.likert === '1', -2,0) + if(datum.likert === '2', -1,0) + if(datum.likert === '3', 0,0) + if(datum.likert === '4', 1,0) + if(datum.likert === '5', 2,0)",
+                        {   // Transforms the string labels into numberic based on the index matching. 
+                            // if(a,b,c) is a ternary operator in Vega-like.
+                            calculate: "indexof(['1','2','3','4','5'], datum.likert) - 2",
                             as: "q_order"
                         },
                         {
-                            calculate: "if (datum.likert === '1' || datum.likert === '2', datum.percentage,0) + if (datum.likert === '3', datum.percentage/2, 0)",
+                            calculate: "if (datum.likert === '1' || datum.likert === '2', datum.percentage, 0) + if (datum.likert === '3', datum.percentage/2, 0)",
                             as: "signed_percentage"
                         },
                         {
-                            stack: "percentage", as: ["v1", "v2"], groupby: ["question"]
+                            stack: "percentage", as: ["barStart", "barEnd"], groupby: ["question"]
                         },
                         { 
                             joinaggregate: [
@@ -55,22 +61,28 @@ export default function Page() {
                             ],
                             groupby: ["question"]
                         },
-                        {
-                            calculate: "datum.v1 - datum.offset", as: "negX"
-                        },
-                        {
-                            calculate: "datum.v2 - datum.offset", as: "posX"
-                        }                        
+                        {calculate: "datum.barStart - datum.offset", as: "xStart"},
+                        {calculate: "datum.barEnd   - datum.offset", as: "xEnd"}                        
                     ],
                     mark: 'bar',
                     encoding: {
                         x: {
-                            field: "negX",
+                            field: "xStart",
                             type: "quantitative",
-                            title: "Percentage"
+                            title: "Percentage",
+                            scale : {
+                                domain: [-100, 100]
+                            },
+                            axis: {
+                                values: ticks,
+                                format: ".0f",       // Show as 0, 10, 20...
+                                labels: true,
+                                labelOverlap: false,
+                                labelBound: true
+                              }                      
                         },
                         x2:{
-                            field: "posX"
+                            field: "xEnd"
                         },
                         y: {
                             field: 'question', 
@@ -79,29 +91,30 @@ export default function Page() {
                                 title: 'Questions',
                                 offset: 5,
                                 ticks: false,
-                                minExtent: 60, 
+                                minExtent: 100, 
                                 domain: false,
                             }
                         },
                         //x: {aggregate: 'sum',
                         //    field: 'count', 
                         //    type: 'quantitative', 
-                        //    stack: 'normalize',           //can decide to normalize each on 100% or keep counts - maybe in divergent bar chart don't want?
+                        //    stack: 'normalize', //can decide to normalize each on 100% or keep counts - maybe in divergent bar chart don't want?
                         //    axis: {title: 'Score'}},
                         color: {
                             field: 'likert',
                             type: 'ordinal',
                             scale: {
                                 domain: ["1", "2", "3", "4", "5"],
-                                range: ["var(--color-primary)", "var(--color-secondary)", "var(--color-tertiary)", "var(--color-secondary)", "var(--color-primary)"], // fix colors - try to create a vega scheme?
+                                range: ["var(--color-primary)" , "var(--color-secondary)", 
+                                        "var(--color-tertiary)", "var(--color-secondary)", "var(--color-primary)"], // fix colors - try to create a vega scheme?
                                 type: "ordinal"
                             },
                             legend: {title: "Likert scale"}
                         },
                         tooltip: [
                             {field: "question", type: "nominal"},
-                            {field: "likert", type: "ordinal"},
-                            {field: "count", type: "quantitative"},
+                            {field: "likert"  , type: "ordinal"},
+                            {field: "count"   , type: "quantitative"},
                         ]
                     }
                 };
@@ -113,9 +126,9 @@ export default function Page() {
     }, []);
 
     return (
-    <div>
-        <h1 className="text-xl font-fold mb-4">Course Evaluation</h1>
-        <div ref={chartRef}></div>
-    </div>
+        <div>
+            <h1 className="text-xl font-fold mb-4">Course Evaluation</h1>
+            <div ref={chartRef} style={{ width: '100%' }}></div>
+        </div>
     );
 }
