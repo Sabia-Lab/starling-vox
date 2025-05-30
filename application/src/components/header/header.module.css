@@ -1,0 +1,44 @@
+.container {
+  display: flex;
+  gap: 10px;
+  padding: 10px;
+  justify-content: end;
+}
+
+/* TODO: Move buttons to separate global stylesheet */
+
+.button {
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: var(--color-outline);
+  background-color: var(--color-surface-container);
+  fill: var(--color-on-surface);
+  transition: border-radius 200ms, background-color 200ms, scale 200ms;
+}
+
+.button svg {
+  padding-top: 2px;
+  width: 25px;
+  height: 25px;
+  transition: fill 200ms, scale 200ms;
+}
+
+.button:hover {
+  cursor: pointer;
+  border-radius: 25%;
+  background-color: var(--color-primary-container);
+  fill: var(--color-on-primary-container);
+}
+
+.button:active {
+  scale: 1.1;
+  background-color: var(--color-secondary-container);
+  fill: var(--color-on-secondary-container);
+}
+
+.button:active svg {
+  scale: 1.1;
+}
