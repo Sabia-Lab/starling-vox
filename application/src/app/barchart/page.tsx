@@ -4,6 +4,23 @@ import { useRef, useEffect } from "react";
 import embed, { vega, VisualizationSpec} from 'vega-embed';
 import * as d3 from "d3"; // for creating theme from interpolation?
 
+
+
+function extractDataPoints(jsonData: {"questions": {[key: string]: string}; "responses": {[key: string]: [{[key: string]: number}]}}){
+    var data : {[key: string]: string | number}[] = []
+    const responses = jsonData["responses"]
+    for (let key in responses){
+        var q = key
+        var a = responses[key]
+        a.forEach((response) => {
+            data.push({"question": q, "likert": String(response.likert), "count": response.count, "percentage": response.percentage})
+        })
+    }
+    console.log(data)
+
+    return data
+}
+
 export default function Page() {  
 
     
@@ -12,7 +29,7 @@ export default function Page() {
     const chartRef = useRef<HTMLDivElement>(null);
     
     useEffect(() => {
-        fetch('/data.json')
+        fetch('/DIT333 Fake Course Likert.json')
             .then((res) => res.json())
             .then((data) => {
                 const spec : VisualizationSpec = {
@@ -37,7 +54,7 @@ export default function Page() {
                     },
                     $schema: 'https://vega.github.io/schema/vega-lite/v6.json',
                     description: 'Course chart',               // add description as variable
-                    data: {values: data},
+                    data: {values: extractDataPoints(data)},
                     transform: [
                         {   // Transforms the string labels into numberic based on the index matching. 
                             // if(a,b,c) is a ternary operator in Vega-like.
