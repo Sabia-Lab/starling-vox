@@ -7,13 +7,17 @@ import * as d3 from "d3"; // for creating theme from interpolation?
 
 
 function extractDataPoints(jsonData: {"questions": {[key: string]: string}; "responses": {[key: string]: [{[key: string]: number}]}}){
+    /// extracts responses and reformats each data point
+    /// in accordance to vega expectations
+    /// example: {question: "Q1", likert: "4", count: 10, percentage: 7.3, prompt: "Q1: I learned a lot from this course"}
+
     var data : {[key: string]: string | number}[] = []
     const responses = jsonData["responses"]
     for (let key in responses){
         var q = key
         var a = responses[key]
         a.forEach((response) => {
-            data.push({"question": q, "likert": String(response.likert), "count": response.count, "percentage": response.percentage})
+            data.push({"question": q, "likert": String(response.likert), "count": response.count, "percentage": response.percentage, "prompt": q + ": " + jsonData["questions"][q]})
         })
     }
     console.log(data)
@@ -29,7 +33,7 @@ export default function Page() {
     const chartRef = useRef<HTMLDivElement>(null);
     
     useEffect(() => {
-        fetch('/DIT333 Fake Course Likert.json')
+        fetch('/DIT333 Fake Course Likert.json')    // add variable to handle course name
             .then((res) => res.json())
             .then((data) => {
                 const spec : VisualizationSpec = {
@@ -48,9 +52,6 @@ export default function Page() {
                         title:{
                             color: "var(--color-on-background)"
                         },
-                        //range: {
-                        //    ordinal: ADD VEGA SCHEME WHEN CREATED
-                        //}
                     },
                     $schema: 'https://vega.github.io/schema/vega-lite/v6.json',
                     description: 'Course chart',               // add description as variable
@@ -110,13 +111,26 @@ export default function Page() {
                                 ticks: false,
                                 minExtent: 100, 
                                 domain: false,
+                            },
+                            scale: {
+                                domain: [ //find a better way to order correctly! maybe name questions 01 rather than 1 so 02 will come before 10
+                                "Q1", 
+                                "Q2", 
+                                "Q3", 
+                                "Q4", 
+                                "Q5", 
+                                "Q6", 
+                                "Q7",
+                                "Q8",
+                                "Q9",
+                                "Q10",
+                                "Q11",
+                                "Q12",
+                                "Q13",
+                                "Q14",
+                                "Q15",]
                             }
                         },
-                        //x: {aggregate: 'sum',
-                        //    field: 'count', 
-                        //    type: 'quantitative', 
-                        //    stack: 'normalize', //can decide to normalize each on 100% or keep counts - maybe in divergent bar chart don't want?
-                        //    axis: {title: 'Score'}},
                         color: {
                             field: 'likert',
                             type: 'ordinal',
@@ -128,7 +142,7 @@ export default function Page() {
                             legend: {title: "Likert scale"}
                         },
                         tooltip: [
-                            {field: "question", type: "nominal"},
+                            {field: "prompt", type: "nominal"},
                             {field: "likert"  , type: "ordinal"},
                             {field: "count"   , type: "quantitative"},
                         ]
