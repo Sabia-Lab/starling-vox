@@ -2,7 +2,6 @@
 
 import { useRef, useEffect } from "react";
 import embed, { vega, VisualizationSpec} from 'vega-embed';
-import * as d3 from "d3"; // for creating theme from interpolation?
 
 function extractDataPoints(jsonData: {"questions": {[key: string]: string}; "responses": {[key: string]: [{[key: string]: number}]}}){
     /// extracts responses and reformats each data point
@@ -24,7 +23,6 @@ function extractDataPoints(jsonData: {"questions": {[key: string]: string}; "res
 }
 
 export default function Page() {  
-
     
     const tickOffset = 10
     const ticks = Array.from({ length: 21 }, (_, i) => -100 + (i * tickOffset) );
@@ -110,24 +108,6 @@ export default function Page() {
                                 minExtent: 100, 
                                 domain: false,
                             },
-                            scale: {
-                                domain: [ //find a better way to order correctly! maybe name questions 01 rather than 1 so 02 will come before 10
-                                "Q1", 
-                                "Q2", 
-                                "Q3", 
-                                "Q4", 
-                                "Q5", 
-                                "Q6", 
-                                "Q7",
-                                "Q8",
-                                "Q9",
-                                "Q10",
-                                "Q11",
-                                "Q12",
-                                "Q13",
-                                "Q14",
-                                "Q15",]
-                            }
                         },
                         color: {
                             field: 'likert',
