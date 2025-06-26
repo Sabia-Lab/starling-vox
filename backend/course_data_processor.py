@@ -10,7 +10,7 @@ def parse_and_convert_course_evaluation(file_path):
     likert_results = extract_likert_questions(response_data, var_to_question)
     open_ended_results = extract_open_ended_questions(response_data, var_to_question)
 
-    evaluation_results_dir = "evaluation_results"
+    evaluation_results_dir = "./application/public/evaluation_results/" #./application/public/evaluation_results/
 
     # Create json_results directory if it does not already exist
     os.makedirs(evaluation_results_dir, exist_ok=True)
@@ -42,7 +42,7 @@ def convert_var_to_q_format(var_name):
     if var_name.startswith("VAR"):
         # extract the number part and conver to int, then add 1
         var_number = int(var_name[3:]) + 1
-        return f"Q{var_number}"
+        return f"Q{var_number:02}"
     return var_name
 
 # Extracts Likert-scale responses (1–6) and calculates counts and percentages
