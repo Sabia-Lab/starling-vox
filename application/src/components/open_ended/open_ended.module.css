@@ -1,0 +1,27 @@
+
+.button {
+  width: 250px;
+  height:30px;
+  padding-top:8px;
+  padding-bottom: 8px;
+  padding-left: 16;
+  padding-right: 16;
+  border-radius: 8px;
+  border-color: var(--color-outline-variant);
+  background-color: var(--color-background);
+  font-size: 12px;
+  font-weight: 600;
+  font-family: 'Roboto', Arial, sans-serif;
+  text-align: center;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-primary);
+  position: fixed;
+  bottom : 20px;
+  right: 20px;
+}
+
+
+
