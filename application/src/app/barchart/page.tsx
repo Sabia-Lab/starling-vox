@@ -76,55 +76,71 @@ export default function Page() {
                             groupby: ["question"]
                         },
                         {calculate: "datum.barStart - datum.offset", as: "xStart"},
-                        {calculate: "datum.barEnd   - datum.offset", as: "xEnd"}                        
+                        {calculate: "datum.barEnd   - datum.offset", as: "xEnd"},                        
+                        {calculate: "((datum.barStart - datum.offset) + (datum.barEnd   - datum.offset))/2", as: "xMid"},                        
                     ],
-                    mark: 'bar',
-                    encoding: {
-                        x: {
-                            field: "xStart",
-                            type: "quantitative",
-                            title: "Percentage",
-                            scale : {
-                                domain: [-100, 100]
+                    layer: [{
+                        mark: 'bar',
+                        encoding: {
+                            x: {
+                                field: "xStart",
+                                type: "quantitative",
+                                title: "Percentage",
+                                scale : {
+                                    domain: [-100, 100]
+                                },
+                                axis: {
+                                    values: ticks,
+                                    format: ".0f",       // Show as 0, 10, 20...
+                                    labels: true,
+                                    labelOverlap: false,
+                                    labelBound: true
+                                }                      
                             },
-                            axis: {
-                                values: ticks,
-                                format: ".0f",       // Show as 0, 10, 20...
-                                labels: true,
-                                labelOverlap: false,
-                                labelBound: true
-                              }                      
-                        },
-                        x2:{
-                            field: "xEnd"
-                        },
-                        y: {
-                            field: 'question', 
-                            type: 'nominal', 
-                            axis: {
-                                title: 'Questions',
-                                offset: 5,
-                                ticks: false,
-                                minExtent: 100, 
-                                domain: false,
+                            x2:{
+                                field: "xEnd"
                             },
-                        },
-                        color: {
-                            field: 'likert',
-                            type: 'ordinal',
-                            scale: {
-                                domain: ["1", "2", "3", "4", "5"],
-                                range: ["var(--color-diverging--2)", "var(--color-diverging--1)", "var(--color-diverging-0)", "var(--color-diverging-1)", "var(--color-diverging-2)"], // fix colors - try to create a vega scheme?
-                                type: "ordinal"
+                            y: {
+                                field: 'question', 
+                                type: 'nominal', 
+                                axis: {
+                                    title: 'Questions',
+                                    offset: 5,
+                                    ticks: false,
+                                    minExtent: 100, 
+                                    domain: false,
+                                },
                             },
-                            legend: {title: "Likert scale"}
-                        },
-                        tooltip: [
-                            {field: "prompt", type: "nominal"},
-                            {field: "likert"  , type: "ordinal"},
-                            {field: "count"   , type: "quantitative"},
-                        ]
+                            color: {
+                                field: 'likert',
+                                type: 'ordinal',
+                                scale: {
+                                    domain: ["1", "2", "3", "4", "5"],
+                                    range: ["var(--color-diverging--2)", "var(--color-diverging--1)", "var(--color-diverging-0)", "var(--color-diverging-1)", "var(--color-diverging-2)"], // fix colors - try to create a vega scheme?
+                                    type: "ordinal"
+                                },
+                                legend: {title: "Likert scale"}
+                            },
+                            tooltip: [
+                                {field: "prompt", type: "nominal"},
+                                {field: "likert"  , type: "ordinal"},
+                                {field: "count"   , type: "quantitative"},
+                            ]
+                        }
+                    },
+                    {
+                        mark: "text",
+                        encoding: {
+                            x: { field: "xMid", type: "quantitative" },
+                            text: { field: "percentage", type: "quantitative", format: ".0f"},
+                            y: {field: "question", type: "nominal"}
+                        }
+                    }],
+                    autosize: {
+                        type: "fit-y",
+                        resize: true
                     }
+                    
                 };
 
                 if(chartRef.current){
