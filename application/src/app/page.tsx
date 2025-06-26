@@ -26,12 +26,13 @@ export default function Home() {
   const handleSearch = (value: string) => {
     setInputValue(value);
 
-        // Filter the testData based on the search term "case insensitive match"
-    const filtered = testData.filter((item) =>
-      item.title.toLowerCase().includes(value.toLowerCase())
-    );
-    setFilteredData(filtered); // Update the filtered data to be displayed
-  };
+      // Filter the testData based on the search term "case insensitive match"
+      const filtered = testData.filter((item) =>
+        item.title.toLowerCase().includes(value.toLowerCase())
+      );
+      setFilteredData(filtered); // Update the filtered data to be displayed
+    };
+
 
   return (
     <div className={styles.page}>
@@ -40,7 +41,16 @@ export default function Home() {
         <h1 className={styles.title}>Starling Vox</h1>
       </div>
       <SearchInput onSearch={handleSearch} />
-      <List data={filteredData} />
+
+      <div className={styles.results_wrapper}>
+        {filteredData.length > 0 ? (
+          // Show list of filtered items
+          <List data={filteredData} />
+        ) : (
+          // Show message if no matches
+          <div className={styles.no_results}>No course found</div>
+        )}
+      </div>
     </div>
   );
 }
