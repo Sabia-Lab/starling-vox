@@ -10,7 +10,7 @@ def parse_and_convert_course_evaluation(file_path):
     likert_results = extract_likert_questions(response_data, var_to_question)
     open_ended_results = extract_open_ended_questions(response_data, var_to_question)
 
-    evaluation_results_dir = "evaluation_results"
+    evaluation_results_dir = "./application/public/evaluation_results/" #./application/public/evaluation_results/
 
     # Create json_results directory if it does not already exist
     os.makedirs(evaluation_results_dir, exist_ok=True)
