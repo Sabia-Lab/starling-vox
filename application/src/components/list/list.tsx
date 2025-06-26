@@ -1,5 +1,7 @@
 "use client";
 
+import styles from "./list.module.css";
+
 export type ListItem = {
   image?: string;
   title: string;
@@ -15,11 +17,14 @@ export default function List({ data }: { data: ListItem[] }) {
   return (
     <>
       {data.map((item, index) => (
-        // Make each item as a clickable div
         <div
           key={index}
-          style={{ cursor: "pointer", padding: "8px 0" }}
-          onClick={() => handleClick(item.title)}>   
+          className={styles.list_item}
+          onClick={() => handleClick(item.title)}
+        >
+          <div className={styles.icon_circle}>
+            {item.title.charAt(0).toUpperCase()}
+          </div>
           {item.title}
         </div>
       ))}
