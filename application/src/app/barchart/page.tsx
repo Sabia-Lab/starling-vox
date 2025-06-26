@@ -4,8 +4,6 @@ import { useRef, useEffect } from "react";
 import embed, { vega, VisualizationSpec} from 'vega-embed';
 import * as d3 from "d3"; // for creating theme from interpolation?
 
-
-
 function extractDataPoints(jsonData: {"questions": {[key: string]: string}; "responses": {[key: string]: [{[key: string]: number}]}}){
     /// extracts responses and reformats each data point
     /// in accordance to vega expectations
@@ -33,7 +31,7 @@ export default function Page() {
     const chartRef = useRef<HTMLDivElement>(null);
     
     useEffect(() => {
-        fetch('/DIT333 Fake Course Likert.json')    // add variable to handle course name
+        fetch('/evaluation_results/DIT333 Fake Course Likert.json')    // add variable to handle course name
             .then((res) => res.json())
             .then((data) => {
                 const spec : VisualizationSpec = {
@@ -160,5 +158,6 @@ export default function Page() {
             <h1 className="text-xl font-fold mb-4">Course Evaluation</h1>
             <div ref={chartRef} style={{ width: '100%' }}></div>
         </div>
+        
     );
 }
