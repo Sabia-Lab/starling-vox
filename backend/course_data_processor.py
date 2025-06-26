@@ -42,7 +42,7 @@ def convert_var_to_q_format(var_name):
     if var_name.startswith("VAR"):
         # extract the number part and conver to int, then add 1
         var_number = int(var_name[3:]) + 1
-        return f"Q{var_number}"
+        return f"Q{var_number:02}"
     return var_name
 
 # Extracts Likert-scale responses (1–6) and calculates counts and percentages
