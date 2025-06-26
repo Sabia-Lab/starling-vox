@@ -26,3 +26,17 @@
   fill: var(--color-primary);
   width: 9vw;
 }
+
+.results_wrapper {
+  min-height: 10vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.no_results {
+  font-size: 1.2rem;
+  color: gray;
+  margin-top: 1rem;
+}

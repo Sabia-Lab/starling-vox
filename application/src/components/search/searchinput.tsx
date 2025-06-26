@@ -15,24 +15,20 @@ const SearchInput = ({ onSearch }: SearchInputProps) => {
     onSearch("");      // Notify the parent component with an empty string
   };
 
-  // Handle pressing the Enter key to trigger search
-  const handleKeyPress = (event: React.KeyboardEvent) => {
-    if (event.key === "Enter") {
-      onSearch(inputValue);  // Trigger the search with the current input value
-    }
-  };
-
 
   return (
     <div className={styles.search_wrapper}>
       <FiSearch className={styles.icon_left} />
       <input
-        className = {styles.search_input}
-        type = "text"
-        placeholder = "Enter course name..."
-        value = {inputValue}
-        onKeyDown={handleKeyPress}
-        onChange = {(e) => setInputValue(e.target.value)}
+        className={styles.search_input}
+        type="text"
+        placeholder="Enter course name..."
+        value={inputValue}
+        onChange={(e) => {
+          const newValue = e.target.value;
+          setInputValue(newValue);
+          onSearch(newValue); // Live search while typing
+        }}
       />
       {inputValue && (
         <FiX
