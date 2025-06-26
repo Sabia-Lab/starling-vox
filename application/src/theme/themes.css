@@ -48,6 +48,12 @@
   --color-surface-container: rgb(237 237 244);
   --color-surface-container-high: rgb(232 231 238);
   --color-surface-container-highest: rgb(226 226 233);
+  --color-diverging--2: rgb(202,0,32);
+  --color-diverging--1: rgb(244,165,130);
+  --color-diverging-0: rgb(224, 230, 245);
+  --color-diverging-1: rgb(146,197,222);
+  --color-diverging-2: rgb(5,113,176);
+
 }
 
 [data-theme="dark"] {
