@@ -1,3 +1,4 @@
+import numpy as np
 import pandas as pd
 import json
 import os
@@ -45,6 +46,25 @@ def convert_var_to_q_format(var_name):
         return f"Q{var_number:02}"
     return var_name
 
+def calculate_mean_median(counts, total_valid):
+    mean = -1
+    median = -1
+
+    median_list = []
+
+    for likert_value, count in counts.items():
+        median_list.extend([int(likert_value)] * count)
+        
+        mean += int(likert_value) * count
+    
+    if total_valid > 0:
+        mean = mean / total_valid
+        median = np.median(median_list)
+    else: 
+        mean = -1
+
+    return {"mean": mean, "median": median}
+
 # Extracts Likert-scale responses (1–6) and calculates counts and percentages
 def extract_likert_questions(response_data, var_to_question):
     results = {
@@ -68,6 +88,7 @@ def extract_likert_questions(response_data, var_to_question):
         results["questions"][q_name] = question_text
         # prepare response list
         response_list = []
+        response_list.append(calculate_mean_median(counts, total_valid))
         for likert_value, count in counts.items():
             not_zero = int(likert_value) != 0
             percentage = round(float((count / total_valid) * 100), 2) if total_valid > 0 and not_zero else 0
@@ -75,7 +96,8 @@ def extract_likert_questions(response_data, var_to_question):
                 "likert": int(likert_value),
                 "count": int(count),
                 "percentage": float(percentage)
-            })
+            })        
+
         results["responses"][q_name] = response_list
     
     return results
