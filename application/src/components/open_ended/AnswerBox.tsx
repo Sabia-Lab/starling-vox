@@ -18,7 +18,7 @@ export default function AnswerBox({ mostOrLeast, courseName }: answerBoxProps) {
     const [answers, setAnswers] = useState<string[]>([]);
 
     useEffect(() => {
-        let path: string = "evaluation_results/DIT333 Fake Course Open Ended.json";//"evaluation_results/" + courseName + " Open Ended.json";
+        let path: string = "evaluation_results/" + courseName + " Open Ended.json";
         let index: number = -1;
         switch (mostOrLeast) {
             case "most":
