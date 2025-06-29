@@ -2,6 +2,7 @@
 
 import { useRef, useEffect } from "react";
 import embed, { vega, VisualizationSpec} from 'vega-embed';
+import OpenEndedContainer from '../../components/open_ended/OpenEndedContainer'
 
 function extractDataPoints(jsonData: {"questions": {[key: string]: string}; "responses": {[key: string]: [{[key: string]: number}]}}){
     /// extracts responses and reformats each data point
@@ -27,7 +28,7 @@ export default function Page() {
     const tickOffset = 10
     const ticks = Array.from({ length: 21 }, (_, i) => -100 + (i * tickOffset) );
     const chartRef = useRef<HTMLDivElement>(null);
-    
+
     useEffect(() => {
         fetch('/evaluation_results/DIT333 Fake Course Likert.json')    // add variable to handle course name
             .then((res) => res.json())
@@ -137,6 +138,7 @@ export default function Page() {
         <div>
             <h1 className="text-xl font-fold mb-4">Course Evaluation</h1>
             <div ref={chartRef} style={{ width: '100%' }}></div>
+            <OpenEndedContainer courseName="DIT333 Fake Course"/>
         </div>
         
     );
