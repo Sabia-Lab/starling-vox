@@ -2,7 +2,7 @@
 
 import { useRef, useEffect } from "react";
 import embed, { vega, VisualizationSpec} from 'vega-embed';
-import OpenEndedContainer from '../../components/open_ended/OpenEndedContainer'
+import PopupButton from "../../components/open_ended/PopupButton"
 
 function extractDataPoints(jsonData: {"questions": {[key: string]: string}; "responses": {[key: string]: [{[key: string]: number}]}}){
     /// extracts responses and reformats each data point
@@ -138,8 +138,7 @@ export default function Page() {
         <div>
             <h1 className="text-xl font-fold mb-4">Course Evaluation</h1>
             <div ref={chartRef} style={{ width: '100%' }}></div>
-            <OpenEndedContainer courseName="DIT333 Fake Course"/>
+            <PopupButton/>
         </div>
-        
     );
 }
