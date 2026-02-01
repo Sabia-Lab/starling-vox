@@ -15,9 +15,12 @@
         "Q13": "Grading criteria for the graded materials are clear.",
         "Q14": "In average, hours/week I have spent in this course",
         "Q15": "The course structure, teaching, and assessment were designed so that I feel that I have been able to learn and be assessed on equal terms as other students in the course"
-    },
+    },    
     "responses": {
-        "Q01": [
+        "Q01": {
+            "median" : "5",
+            "mean" : "4.32",
+            "distribution" :[
             {
                 "likert": 1,
                 "count": 1,
@@ -43,7 +46,9 @@
                 "count": 17,
                 "percentage": 60.71
             }
-        ],
+        ]
+        }
+        ,
         "Q02": [
             {
                 "likert": 1,

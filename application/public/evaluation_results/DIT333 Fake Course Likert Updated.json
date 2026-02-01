@@ -1,0 +1,233 @@
+{
+    "Q01": {
+        "description" : "I find the course intellectually challenging and stimulating.",
+        "median" : "5",
+        "mean" : "4.32",
+        "distribution" :[
+        {
+            "likert": 1,
+            "count": 1,
+            "percentage": 3.57
+        },
+        {
+            "likert": 2,
+            "count": 1,
+            "percentage": 3.57
+        },
+        {
+            "likert": 3,
+            "count": 2,
+            "percentage": 7.14
+        },
+        {
+            "likert": 4,
+            "count": 7,
+            "percentage": 25.0
+        },
+        {
+            "likert": 5,
+            "count": 17,
+            "percentage": 60.71
+        }
+    ]
+    }
+    ,
+    "Q02": {
+        "description" : "I have learned something that I consider valuable.",
+        "median" : "5",
+        "mean" : "4.32",
+        "distribution" : [
+        {
+            "likert": 1,
+            "count": 1,
+            "percentage": 3.57
+        },
+        {
+            "likert": 2,
+            "count": 1,
+            "percentage": 3.57
+        },
+        {
+            "likert": 3,
+            "count": 2,
+            "percentage": 7.14
+        },
+        {
+            "likert": 4,
+            "count": 10,
+            "percentage": 35.71
+        },
+        {
+            "likert": 5,
+            "count": 14,
+            "percentage": 50.0
+        }
+    ]},
+    "Q03": {
+    "description": "The instructor is enthusiastic about teaching the course.",
+    "median": 4,
+    "mean": 3.46,
+    "distribution": [
+        { "likert": 1, "count": 4, "percentage": 14.29 },
+        { "likert": 2, "count": 2, "percentage": 7.14 },
+        { "likert": 3, "count": 5, "percentage": 17.86 },
+        { "likert": 4, "count": 11, "percentage": 39.29 },
+        { "likert": 5, "count": 6, "percentage": 21.43 }
+    ]
+    },
+
+    "Q04": {
+    "description": "The instructor's style of presentation holds your interest during class.",
+    "median": 3,
+    "mean": 2.96,
+    "distribution": [
+        { "likert": 1, "count": 10, "percentage": 35.71 },
+        { "likert": 2, "count": 1, "percentage": 3.57 },
+        { "likert": 3, "count": 7, "percentage": 25.0 },
+        { "likert": 4, "count": 8, "percentage": 28.57 },
+        { "likert": 5, "count": 2, "percentage": 7.14 }
+    ]
+    },
+
+    "Q05": {
+    "description": "The instructor's explanations are clear.",
+    "median": 3,
+    "mean": 2.82,
+    "distribution": [
+        { "likert": 1, "count": 7, "percentage": 25.0 },
+        { "likert": 2, "count": 4, "percentage": 14.29 },
+        { "likert": 3, "count": 6, "percentage": 21.43 },
+        { "likert": 4, "count": 9, "percentage": 32.14 },
+        { "likert": 5, "count": 2, "percentage": 7.14 }
+    ]
+    },
+
+    "Q06": {
+    "description": "The instructor made required material available on time.",
+    "median": 4,
+    "mean": 3.89,
+    "distribution": [
+        { "likert": 1, "count": 3, "percentage": 10.71 },
+        { "likert": 2, "count": 1, "percentage": 3.57 },
+        { "likert": 3, "count": 4, "percentage": 14.29 },
+        { "likert": 4, "count": 8, "percentage": 28.57 },
+        { "likert": 5, "count": 12, "percentage": 42.86 }
+    ]
+    },
+
+    "Q07": {
+    "description": "The instructor prepared and explained the lecture materials carefully.",
+    "median": 4,
+    "mean": 2.96,
+    "distribution": [
+        { "likert": 1, "count": 7, "percentage": 25.0 },
+        { "likert": 2, "count": 4, "percentage": 14.29 },
+        { "likert": 3, "count": 4, "percentage": 14.29 },
+        { "likert": 4, "count": 11, "percentage": 39.29 },
+        { "likert": 5, "count": 2, "percentage": 7.14 }
+    ]
+    },
+
+    "Q08": {
+    "description": "Students are encouraged to ask questions and are given meaningful answers.",
+    "median": 4,
+    "mean": 3.50,
+    "distribution": [
+        { "likert": 1, "count": 5, "percentage": 17.86 },
+        { "likert": 3, "count": 8, "percentage": 28.57 },
+        { "likert": 4, "count": 6, "percentage": 21.43 },
+        { "likert": 5, "count": 9, "percentage": 32.14 }
+    ]
+    },
+
+    "Q09": {
+    "description": "The instructor makes students feel welcome in seeking help or advice.",
+    "median": 3,
+    "mean": 2.96,
+    "distribution": [
+        { "likert": 1, "count": 7, "percentage": 25.0 },
+        { "likert": 2, "count": 3, "percentage": 10.71 },
+        { "likert": 3, "count": 6, "percentage": 21.43 },
+        { "likert": 4, "count": 8, "percentage": 28.57 },
+        { "likert": 5, "count": 4, "percentage": 14.29 }
+    ]
+    },
+
+    "Q10": {
+    "description": "The instructor contrasts the implications of various theories, techniques, frameworks, processes, and tools.",
+    "median": 4,
+    "mean": 3.67,
+    "distribution": [
+        { "likert": 0, "count": 1, "percentage": 0.0 },
+        { "likert": 1, "count": 1, "percentage": 3.7 },
+        { "likert": 2, "count": 2, "percentage": 7.41 },
+        { "likert": 3, "count": 5, "percentage": 18.52 },
+        { "likert": 4, "count": 15, "percentage": 55.56 },
+        { "likert": 5, "count": 4, "percentage": 14.81 }
+    ]
+    },
+
+    "Q11": {
+    "description": "Feedback on graded materials was valuable.",
+    "median": 3,
+    "mean": 2.71,
+    "distribution": [
+        { "likert": 1, "count": 8, "percentage": 28.57 },
+        { "likert": 2, "count": 3, "percentage": 10.71 },
+        { "likert": 3, "count": 8, "percentage": 28.57 },
+        { "likert": 4, "count": 8, "percentage": 28.57 },
+        { "likert": 5, "count": 1, "percentage": 3.57 }
+    ]
+    },
+
+    "Q12": {
+    "description": "Methods of evaluating student work were fair and appropriate.",
+    "median": 4,
+    "mean": 3.29,
+    "distribution": [
+        { "likert": 1, "count": 5, "percentage": 17.86 },
+        { "likert": 2, "count": 3, "percentage": 10.71 },
+        { "likert": 3, "count": 5, "percentage": 17.86 },
+        { "likert": 4, "count": 9, "percentage": 32.14 },
+        { "likert": 5, "count": 6, "percentage": 21.43 }
+    ]
+    },
+
+    "Q13": {
+    "description": "Grading criteria for the graded materials are clear.",
+    "median": 4,
+    "mean": 2.82,
+    "distribution": [
+        { "likert": 1, "count": 9, "percentage": 32.14 },
+        { "likert": 2, "count": 4, "percentage": 14.29 },
+        { "likert": 3, "count": 1, "percentage": 3.57 },
+        { "likert": 4, "count": 11, "percentage": 39.29 },
+        { "likert": 5, "count": 3, "percentage": 10.71 }
+    ]
+    },
+
+    "Q14": {
+    "description": "Average hours per week spent on this course.",
+    "median": 5,
+    "mean": 4.86,
+    "distribution": [
+        { "likert": 3, "count": 3, "percentage": 10.71 },
+        { "likert": 4, "count": 4, "percentage": 14.29 },
+        { "likert": 5, "count": 8, "percentage": 28.57 },
+        { "likert": 6, "count": 13, "percentage": 46.43 }
+    ]
+    },
+
+    "Q15": {
+    "description": "The course was designed so that I could learn and be assessed on equal terms.",
+    "median": 4,
+    "mean": 3.82,
+    "distribution": [
+        { "likert": 1, "count": 2, "percentage": 7.14 },
+        { "likert": 2, "count": 1, "percentage": 3.57 },
+        { "likert": 3, "count": 6, "percentage": 21.43 },
+        { "likert": 4, "count": 10, "percentage": 35.71 },
+        { "likert": 5, "count": 9, "percentage": 32.14 }
+    ]
+    }
+}

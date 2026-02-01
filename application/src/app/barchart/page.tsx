@@ -3,30 +3,45 @@
 import { useRef, useEffect } from "react";
 import embed, { vega, VisualizationSpec} from 'vega-embed';
 
-function extractDataPoints(jsonData: {"questions": {[key: string]: string}; "responses": {[key: string]: {[key: string]: number}[]}}){
+type Question = {
+        [key: string]: {
+            "description": string,
+            "median": number,
+            "mean": number,
+            "distribution": [{
+                "likert": number,
+                "count": number,
+                "percentage": number
+            }]
+        }
+    }
+
+function extractDataPoints(jsonData: Question){
     /// extracts responses and reformats each data point
     /// in accordance to vega expectations
-    /// example: {question: "Q1", likert: "4", count: 10, percentage: 7.3, prompt: "Q1: I learned a lot from this course"}
 
     var data : {[key: string]: string | number}[] = []
-    const responses = jsonData["responses"]
-    for (let key in responses){
-        var question = key
-        if (responses[key].length > 1){
-            var stats = responses[key][0]
-            var answer = responses[key].slice(1)
-            answer.forEach((response) => {
-                data.push({"question": question, 
+
+
+    Object.entries(jsonData).forEach((entry) => {
+        const questionKey = entry[0]
+        const questionValue = entry[1]        
+
+        if(questionValue.distribution.length > 1) {
+            questionValue.distribution.forEach((response) => {
+                data.push({
+                    "question": questionKey, 
                     "likert": String(response.likert), 
                     "count": response.count, 
                     "percentage": response.percentage, 
-                    "prompt": question + ": " + jsonData["questions"][question],
-                    "mean": stats.mean,
-                    "median": stats.median})
+                    "prompt": questionKey + ": " + questionValue.description,
+                    "mean": questionValue.mean,
+                    "median": questionValue.median
+                })
             })
         }
-    }
-    console.log(data)
+    });
+   console.log(data)
 
     return data
 }
@@ -38,7 +53,7 @@ export default function Page() {
     const chartRef = useRef<HTMLDivElement>(null);
     
     useEffect(() => {
-        fetch('/evaluation_results/DIT333 Fake Course Likert.json')    // add variable to handle course name
+        fetch('/evaluation_results/DIT333 Fake Course Likert Updated.json')    // add variable to handle course name
             .then((res) => res.json())
             .then((data) => {
                 const spec : VisualizationSpec = {
