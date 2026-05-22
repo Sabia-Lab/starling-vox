@@ -1,97 +1,57 @@
-import Image from "next/image";
+"use client";
 import styles from "@/app/page.module.css";
-import Link from "next/link";
+import List, { ListItem } from "@/components/list/list";
+import SearchInput from "@/components/search/searchinput";
+import { ReactSVG } from "react-svg";
+import { useState } from "react";
+
+const testData: Array<ListItem> = [
+  {
+    title: "Test3",
+    description: "Description",
+  },
+  {
+    title: "Test2",
+    description: "Description",
+  },
+];
+
 
 export default function Home() {
+    // State to track the current value of the search input
+  const [inputValue, setInputValue] = useState("");
+  const [filteredData, setFilteredData] = useState(testData);
+
+  // Function to handle search input changes
+  const handleSearch = (value: string) => {
+    setInputValue(value);
+
+      // Filter the testData based on the search term "case insensitive match"
+      const filtered = testData.filter((item) =>
+        item.title.toLowerCase().includes(value.toLowerCase())
+      );
+      setFilteredData(filtered); // Update the filtered data to be displayed
+    };
+
+
   return (
     <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="images/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol>
-          <li>
-            Get started by editing <code>src/app/page.tsx</code>.
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+      <div className={styles.title_container}>
+        <ReactSVG src="images/logo.svg" className={styles.logo} />
+        <h1 className={styles.title}>Starling Vox</h1>
+      </div>
+      <SearchInput onSearch={handleSearch} />
 
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="images/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <button><Link href="/barchart">"See bar chart"</Link></button>
-          <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.secondary}
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className={styles.footer}>
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="images/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="images/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="images/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      <div className={styles.results_wrapper}>
+        {filteredData.length > 0 ? (
+          // Show list of filtered items
+          <List data={filteredData} />
+        ) : (
+          // Show message if no matches
+          <div className={styles.no_results}>No course found</div>
+        )}
+      </div>
     </div>
   );
 }
+

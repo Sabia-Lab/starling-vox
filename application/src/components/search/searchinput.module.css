@@ -1,0 +1,62 @@
+.search_wrapper {
+  position: relative; /* Needed for absolute positioned icons inside */
+  width: 100%;
+  display: flex;
+  gap: 0.5em;
+  padding: 0.8em;
+  border-radius: 9999px;
+  overflow: hidden !important;
+  border: 2px solid var(--color-outline);
+  background-color: var(--color-surface-container);
+  flex-direction: row;
+  align-items: center;
+  max-width: 850px;
+}
+
+.search_wrapper * {
+  font-size: 1.2em;
+}
+
+.search_input {
+  width: 100%; /* Fit wrapper 100% */
+  color: var(--color-on-surface);
+  background: transparent; /* Remove background */
+  border: 0px; /* Hide outlines */
+  /* box-shadow: 0 0.3vh 1vh rgba(0, 0, 0, 0.3); Add shadow to searchbar */
+  outline: none;
+}
+
+.icon_left {
+  position: relative;
+  color: var(--color-on-surface);
+}
+
+.icon_right {
+  position: relative;
+  color: var(--color-on-surface);
+  cursor: pointer;
+}
+
+@media (max-width: 1200px) {
+  .search_wrapper {
+    max-width: 700px;
+  }
+}
+
+@media (max-width: 900px) {
+  .search_wrapper {
+    max-width: 500px;
+    padding: 0.7em;
+  }
+
+  .search_wrapper * {
+    font-size: 0.9em;
+  }
+}
+
+@media (max-width: 600px) {
+  .search_wrapper {
+    padding: 0.5em;
+    max-width: 350px;
+  }
+}
