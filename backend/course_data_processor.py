@@ -1,6 +1,7 @@
 import pandas as pd
 import json
 import os
+from pathlib import Path
 
 def parse_and_convert_course_evaluation(file_path):
     variable_data, response_data = read_excel_file(file_path)
@@ -10,7 +11,8 @@ def parse_and_convert_course_evaluation(file_path):
     likert_results = extract_likert_questions(response_data, var_to_question)
     open_ended_results = extract_open_ended_questions(response_data, var_to_question)
 
-    evaluation_results_dir = "./application/public/evaluation_results/" #./application/public/evaluation_results/
+    project_root = Path(__file__).resolve().parent.parent
+    evaluation_results_dir = project_root / "application" / "public" / "evaluation_results"
 
     # Create json_results directory if it does not already exist
     os.makedirs(evaluation_results_dir, exist_ok=True)
@@ -22,6 +24,11 @@ def parse_and_convert_course_evaluation(file_path):
 
     write_to_json(likert_file_name, likert_results)
     write_to_json(open_ended_file_name, open_ended_results)
+
+    return {
+        "likert": likert_results,
+        "openEnded": open_ended_results
+    }
 
 def read_excel_file(excel_file):
     print("Reading Excel file...")
