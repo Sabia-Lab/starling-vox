@@ -29,6 +29,18 @@ type ThemeContextWrapper = {
   toggleContrastMode: () => void;
 };
 
+const getBrowserStorage = () => {
+  if (
+    typeof window !== "undefined" &&
+    typeof window.localStorage?.getItem === "function" &&
+    typeof window.localStorage?.setItem === "function"
+  ) {
+    return window.localStorage;
+  }
+
+  return undefined;
+};
+
 const themeContext = createContext<ThemeContextWrapper>({
   isDark: false,
   isHighContrast: false,
@@ -52,7 +64,7 @@ const ThemeWrapper = ({ children }: { children: React.ReactNode }) => {
 
   // No theme specified, check localstorage
   useEffect(() => {
-    const storedTheme = localStorage.getItem(LOCALSTORAGE_THEME_KEY);
+    const storedTheme = getBrowserStorage()?.getItem(LOCALSTORAGE_THEME_KEY);
 
     if (storedTheme) {
       setTheme(storedTheme as ThemeState);
@@ -68,7 +80,7 @@ const ThemeWrapper = ({ children }: { children: React.ReactNode }) => {
   // Update the theme on the document and in localstorage
   useEffect(() => {
     document.documentElement.setAttribute(DATA_THEME_ATTRIBUTE, theme);
-    localStorage.setItem(LOCALSTORAGE_THEME_KEY, theme);
+    getBrowserStorage()?.setItem(LOCALSTORAGE_THEME_KEY, theme);
   }, [theme]);
 
   const toggleDarkMode = () => {
