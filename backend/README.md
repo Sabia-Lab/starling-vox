@@ -6,3 +6,6 @@
 
 ### Sync packages
 `uv sync`
+
+### To run the project
+uv run python main.py 
